@@ -1,29 +1,30 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
-    //Launching browser by setting its viewport
+    //Open browser by setting its viewport
     const browser = await puppeteer.launch({
         headless: false,
         defaultViewport:{width:1200,height:1200,},
     });
+
     //Opening a page
     const page = await browser.newPage();
     
-    //Navigating to google search page
+    //Navigate to the page
     await page.goto('https://google.com');
     
-    //Identifying the input field
+    //Identify the input field
     const elementHandle = await page.$(`[name=q]`);
     
-    //Typing puppeteer in the input field
+    //Type "puppeteer" into the text box
     await elementHandle.type('puppeteer');
 
-    //Pressing Enter key
+    //Press the "Enter" key
     await elementHandle.press('Enter');
     
-    //Taking screenshot and saving it in the path with the given filename
+    //Take a screenshot and save it in the path with the given filename
     await page.screenshot({path: 'screenshot.png'});
     
-    //Closing browser
+    //Close browser
     await browser.close();
 })();

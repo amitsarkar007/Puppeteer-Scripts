@@ -25,6 +25,5 @@ const puppeteer = require('puppeteer');
     //Take a screenshot and save it in the path with the given filename
     await page.screenshot({path: 'screenshot.png'});
     
-    //Close browser
-    await browser.close();
+    await browser.close(); //Close browser
 })();
